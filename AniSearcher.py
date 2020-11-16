@@ -32,7 +32,7 @@ class Searcher:
                             if result['mal_id'] not in animelist:
                                 animelist.append(result['mal_id'])
                                 count += 1
-            time.sleep(2)#so twats dont get banned cus rate limiting is an ass
+            time.sleep(1)#so twats dont get banned cus rate limiting is an ass
                                 #print(f"Title: {result['title']} | mal_id: {result['mal_id']} | airing = {result['airing_start']} | season = {results['season_name']} | type = {result['type']} | genre = {genres['name']}")
 
         print('number of anime: ', count)
