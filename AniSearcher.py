@@ -43,21 +43,29 @@ class Searcher:
     def idResult(self, id):
         jikan = Jikan()
         result = jikan.anime(id) #want: trailer_url, image_url, url (MAL), title, title_english, status, aired['from' and 'to'].split(T) and get [0] OR premiered, synopsis, score
-        answer = f"Title: {result['title']} \nPremiered: {result['premiered']} \nScore: {result['score']} \nAired:{result['premiered']} \nSynopsis: {result['synopsis']}"
-        return answer
+        answer = f"Title: {result['title']} \nPremiered: {result['premiered']} \nScore: {result['score']} \nAired:{result['premiered']} \nSynopsis: {result['synopsis']} \nImage: {result['image_url']}"
+
+        return result
         #print(f"Title: {result['title']} \nPremiered: {result['premiered']} \nScore: {result['score']} \nAired:{result['premiered']} \nSynopsis: {result['synopsis']}")
 
     def picker(self, anilist):
         nAnime = len(anilist) - 1
-        pick = random.randint(0,nAnime)
-        animeid = anilist[pick]
+        try:
+            pick = random.randint(0,nAnime)
+            animeid = anilist[pick]
+            answer = Searcher.idResult(self,animeid)
+        except ValueError:
+            answer = None
+            animeid = None
+            print('None')
         print('ID:', animeid)
-        answer = Searcher.idResult(self,animeid)
         return answer
 
     def reroll(self):
         global anlist
-        Searcher.picker(self, anlist)
+        time.sleep(2)
+        reroll = Searcher.picker(self, anlist)
+        return reroll
 
 
 #TESTING STUFF
@@ -67,7 +75,7 @@ class Searcher:
 #s = Searcher()
 
 
-#alist = s.search(yearlist = y, seasonlist = x, genrelist = g)
+#alist = s.search(yearlist = y, seasonlist = x, genrelist = g)#
 #finale = s.picker(alist)
 #print(finale)
 
