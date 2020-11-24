@@ -20,7 +20,7 @@ class mainWindow:
         : 0, 'Supernatural': 0, 'Military': 0, 'Police': 0, 'Psychological': 0, 'Thriller': 0, 'Seinen': 0, 'Josei': 0}
 
         self.root = tk.Tk()
-        self.root.title("Still thinking about it")
+        self.root.title("AniSearch by Lunaria")
 
         self.main_frame = tk.Frame(self.root, background = '#232424')
         self.main_frame.grid(row=0, column=0, padx=10, pady=10)
